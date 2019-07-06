@@ -1,0 +1,11 @@
+C:\depot\github\ef-reset\Sample.Ef\bin\Debug\netcoreapp2.2\Sample.Ef.deps.json
+C:\depot\github\ef-reset\Sample.Ef\bin\Debug\netcoreapp2.2\Sample.Ef.runtimeconfig.json
+C:\depot\github\ef-reset\Sample.Ef\bin\Debug\netcoreapp2.2\Sample.Ef.runtimeconfig.dev.json
+C:\depot\github\ef-reset\Sample.Ef\bin\Debug\netcoreapp2.2\Sample.Ef.dll
+C:\depot\github\ef-reset\Sample.Ef\bin\Debug\netcoreapp2.2\Sample.Ef.pdb
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.csprojAssemblyReference.cache
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.csproj.CoreCompileInputs.cache
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.AssemblyInfoInputs.cache
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.AssemblyInfo.cs
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.dll
+C:\depot\github\ef-reset\Sample.Ef\obj\Debug\netcoreapp2.2\Sample.Ef.pdb
