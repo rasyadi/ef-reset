@@ -1,6 +1,9 @@
 # Visual Studio Code
 .vscode
 
+# Visual Studio
+.vs
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -16,3 +19,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+# Ignore sample EF project
+Sample.Ef
