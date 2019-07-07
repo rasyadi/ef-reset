@@ -3,9 +3,40 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38641A6F-CFB0-4ECB-8657-FE6A2CA3199D}"
+	ProjectSection(SolutionItems) = preProject
+		Create-Test-Project.ps1 = Create-Test-Project.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5F061029-7A8E-4744-8790-4C3E3227018A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C714F5F-7D13-46D3-A7EA-7F55E0BAD937}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfReset", "EfReset\EfReset.csproj", "{72CBA65D-6C34-41E7-BC55-FDAA12967D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfReset.Tests", "EfReset.Tests\EfReset.Tests.csproj", "{180E4A48-91CB-43D6-9130-57A8A9C93320}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72CBA65D-6C34-41E7-BC55-FDAA12967D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72CBA65D-6C34-41E7-BC55-FDAA12967D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72CBA65D-6C34-41E7-BC55-FDAA12967D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CBA65D-6C34-41E7-BC55-FDAA12967D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180E4A48-91CB-43D6-9130-57A8A9C93320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180E4A48-91CB-43D6-9130-57A8A9C93320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180E4A48-91CB-43D6-9130-57A8A9C93320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180E4A48-91CB-43D6-9130-57A8A9C93320}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72CBA65D-6C34-41E7-BC55-FDAA12967D26} = {5F061029-7A8E-4744-8790-4C3E3227018A}
+		{180E4A48-91CB-43D6-9130-57A8A9C93320} = {7C714F5F-7D13-46D3-A7EA-7F55E0BAD937}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCAFE419-A8E3-49B1-9C9A-5E8EC5B50D75}
