@@ -1,15 +1,15 @@
 ﻿namespace EfReset.Tests.TestingHelpers
 {
-    public class FakeDbContext : IDbContext
+    public class FakeDbContextInfo : IDbContextInfo
     {
         private string _info;
 
-        public FakeDbContext(string info)
+        public FakeDbContextInfo(string info)
         {
             _info = info;
         }
 
-        public string GetInfo()
+        public string GetInfo(string projectPath)
         {
             return _info;
         }
