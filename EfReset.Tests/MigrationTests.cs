@@ -11,27 +11,54 @@ namespace EfReset.Tests
     public class MigrationTests
     {
         [Theory, AutoData]
-        public void Remove_DirectoryNotExist_ThrowsDirectoryNotFoundException(Migration sut)
+        public void Remove_ProjectPathNotExist_ThrowsDirectoryNotFoundException(Migration sut)
         {
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
                 { @"C:\temp", new MockFileData("Test")}
             });
             
-            Action act = () => sut.Remove(@"C:\demo");
+            Action act = () => sut.Remove(@"C:\demo", "");
 
             act.Should().Throw<DirectoryNotFoundException>();
         }
 
         [Theory, AutoData]
-        public void Remove_DirectoryExist_NotThrowsDirectoryNotFoundException(Migration sut)
+        public void Remove_ProjectPathExist_NotThrowsDirectoryNotFoundException(Migration sut)
         {
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
                 { @"C:\temp", new MockFileData("Test")}
             });
 
-            Action act = () => sut.Remove(@"C:\temp");
+            Action act = () => sut.Remove(@"C:\temp", "");
 
             act.Should().NotThrow<DirectoryNotFoundException>();
-        }        
+        }
+
+        [Theory, AutoData]
+        public void Remove_MigrationsPathNotExist_ThrowsDirectoryNotFoundException(Migration sut)
+        {
+            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
+                { @"C:\temp", new MockFileData("Test") },
+                { @"C:\temp\Migrate", new MockFileData("Test")},
+            });
+
+            Action act = () => sut.Remove(@"C:\demo", @"C:\demo\Migrations");
+
+            act.Should().Throw<DirectoryNotFoundException>();
+        }
+
+        [Theory, AutoData]
+        public void Remove_MigrationsPathExist_ThrowsDirectoryNotFoundException(Migration sut)
+        {
+            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
+                { @"C:\temp", new MockFileData("Test")},
+                { @"C:\temp\Migrations", new MockFileData("Test")},
+            });
+
+            Action act = () => sut.Remove(@"C:\demo", @"C:\demo\Migrations");
+
+            act.Should().Throw<DirectoryNotFoundException>();
+        }
+
     }
 }
