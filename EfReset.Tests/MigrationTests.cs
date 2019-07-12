@@ -32,7 +32,6 @@ namespace EfReset.Tests
             Action act = () => sut.Remove(@"C:\temp");
 
             act.Should().NotThrow<DirectoryNotFoundException>();
-        }
-
+        }        
     }
 }
