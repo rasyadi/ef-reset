@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace EfReset
 {
-    public class Table
+    public class Table: ITable
     {
-        public static void Drop(string connectionString)
+        public void Drop(string connectionString)
         {
             using (var context = new EfResetDbContext(connectionString))
             {

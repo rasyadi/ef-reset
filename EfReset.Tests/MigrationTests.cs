@@ -1,5 +1,6 @@
 ﻿using AutoFixture.Xunit2;
 using FluentAssertions;
+using NSubstitute;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,42 +24,34 @@ namespace EfReset.Tests
         }
 
         [Theory, AutoData]
-        public void Remove_ProjectPathExist_NotThrowsDirectoryNotFoundException(Migration sut)
+        public void Remove_MigrationsFolderNotExist_ThrowsDirectoryNotFoundException(Migration sut)
         {
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
-                { @"C:\temp", new MockFileData("Test")}
+                { @"C:\temp", new MockFileData("Test")},
+                { @"C:\temp\Migrate", new MockFileData("Test")},
             });
 
-            Action act = () => sut.Remove(@"C:\temp", "");
+            Action act = () => sut.Remove(@"C:\temp", @"C:\temp\Migrations");
 
             act.Should().NotThrow<DirectoryNotFoundException>();
         }
 
         [Theory, AutoData]
-        public void Remove_MigrationsPathNotExist_ThrowsDirectoryNotFoundException(Migration sut)
-        {
-            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
-                { @"C:\temp", new MockFileData("Test") },
-                { @"C:\temp\Migrate", new MockFileData("Test")},
-            });
-
-            Action act = () => sut.Remove(@"C:\demo", @"C:\demo\Migrations");
-
-            act.Should().Throw<DirectoryNotFoundException>();
-        }
-
-        [Theory, AutoData]
-        public void Remove_MigrationsPathExist_ThrowsDirectoryNotFoundException(Migration sut)
+        public void Remove_AllPathExist_PathDeleted(Migration sut)
         {
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
                 { @"C:\temp", new MockFileData("Test")},
                 { @"C:\temp\Migrations", new MockFileData("Test")},
             });
+            var dbInfo = Substitute.For<IDbInfo>();
+            _ = Substitute.For<ITable>();            
+            _ = dbInfo.Parse("test").Returns(new DbInfo());
 
-            Action act = () => sut.Remove(@"C:\demo", @"C:\demo\Migrations");
+            Action act = () => sut.Remove(@"C:\temp", @"C:\temp\Migrations");
 
-            act.Should().Throw<DirectoryNotFoundException>();
+            fileSystem.Directory.Exists(@"C:\temp\Migrations").Should().BeFalse();
         }
+
 
     }
 }

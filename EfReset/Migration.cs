@@ -6,14 +6,16 @@ namespace EfReset
     public class Migration
     {
         private readonly IFileSystem _fileSystem;
-        private readonly DbContextInfo _dbContextInfo;
-        private DbInfo _dbInfo;
+        private readonly IDbContextInfo _dbContextInfo;
+        private readonly ITable _table;
+        private IDbInfo _dbInfo;
 
         public Migration(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
             _dbContextInfo = new DbContextInfo();
             _dbInfo = new DbInfo();
+            _table = new Table();
         }
 
         public Migration() : this(new FileSystem())
@@ -27,9 +29,9 @@ namespace EfReset
                 throw new DirectoryNotFoundException(nameof(projectPath));
             }
 
-            _dbInfo = _dbInfo.Parse(_dbContextInfo.GetInfo(projectPath));                       
-            
-            Table.Drop($"Data Source={Path.Combine(projectPath, _dbInfo.DataSource)}");
+            _dbInfo = _dbInfo.Parse(_dbContextInfo.GetInfo(projectPath));
+
+            _table.Drop($"Data Source={Path.Combine(projectPath, _dbInfo.DataSource)}");
 
             if (!_fileSystem.Directory.Exists(migrationsPath))
             {

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace EfReset
 {
-    public class DbInfo
+    public class DbInfo: IDbInfo
     {
         public string ProviderName { get; set; }
         public string DatabaseName { get; set; }
