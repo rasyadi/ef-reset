@@ -36,15 +36,15 @@ namespace EfReset.Tests
             act.Should().NotThrow<DirectoryNotFoundException>();
         }
 
-        [Theory, AutoData]
-        public void Remove_AllPathExist_PathDeleted(Migration sut)
+        [Theory, AutoNSubstituteData]
+        public void Remove_AllPathExist_PathDeleted(
+            [Frozen] IDbInfo dbInfo,            
+            Migration sut)
         {
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData> {
                 { @"C:\temp", new MockFileData("Test")},
                 { @"C:\temp\Migrations", new MockFileData("Test")},
-            });
-            var dbInfo = Substitute.For<IDbInfo>();
-            _ = Substitute.For<ITable>();            
+            });            
             _ = dbInfo.Parse("test").Returns(new DbInfo());
 
             Action act = () => sut.Remove(@"C:\temp", @"C:\temp\Migrations");
