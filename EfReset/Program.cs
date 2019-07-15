@@ -1,17 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using McMaster.Extensions.CommandLineUtils;
 using System;
+using System.IO;
 
 namespace EfReset
 {
     class Program
     {
-        static void Main(string[] args)
-        {          
+        [Option(Description = "Directory of the Entity Framework Core project")]
+        public string ProjectPath { get; set; }
+
+        public static void Main(String[] args)
+            => CommandLineApplication.Execute<Program>(args);
+
+        private void OnExecute()
+        {
+            var migrationFolder = Path.Join(ProjectPath, "Migrations");
             var migration = new Migration();
-            migration.Remove(@"C:\\depot\\github\\ef-reset\\Sample.Ef", @"C:\\depot\\github\\ef-reset\\Sample.Ef\Migrations");                       
-            
+            migration.Remove(ProjectPath, migrationFolder);
+
             Console.WriteLine("The End");
         }
-
     }
 }
